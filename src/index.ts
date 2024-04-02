@@ -8,6 +8,7 @@ import LoginRoute from "./routes/user/login";
 import GetAnimeRoute from "./routes/anime/getAnimes";
 import InsertAnimeRoute from "./routes/anime/insertAnime";
 import 'dotenv/config';
+import Routes from './routes'
 
 const app = express();
 
@@ -21,14 +22,7 @@ app.get("/", (req, res) => {
     res.json({ message: "Hello World" });
 });
 
-const routes = [
-    RegisterRoute, 
-    LoginRoute, 
-    GetAnimeRoute, 
-    InsertAnimeRoute
-];
-
-routes.forEach((route) => {
+Routes.forEach((route) => {
     app.use('/', route);
 });
 

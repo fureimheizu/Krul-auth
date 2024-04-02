@@ -16,7 +16,6 @@ const verifyTokenMiddleware = (req: Request, res: Response, next: NextFunction) 
 
     const accessToken = token.split(" ")[1]
     jwt.verify(accessToken, jwtSecret, (err, decoded) => {
-        console.log(token)
         if(err) {
             return res.status(401).json({ message: "Token is not valid" })
         }
