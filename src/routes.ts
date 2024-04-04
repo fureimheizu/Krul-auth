@@ -8,11 +8,15 @@ import UpdateAnimeRoute from './routes/anime/updateAnime'
 import RegisterRoute from './routes/user/register'
 import LoginRoute from './routes/user/login'
 
+// Health check
+import HealthCheckRoute from './routes/gateway/health'
+
 export default [
     GetAnimeRoute,
     InsertAnimeRoute,
     RemoveAnimeRoute,
     UpdateAnimeRoute,
     RegisterRoute,
-    LoginRoute
+    LoginRoute,
+    HealthCheckRoute
 ]

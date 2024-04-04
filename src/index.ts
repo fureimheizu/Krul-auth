@@ -9,6 +9,7 @@ import GetAnimeRoute from "./routes/anime/getAnimes";
 import InsertAnimeRoute from "./routes/anime/insertAnime";
 import 'dotenv/config';
 import Routes from './routes'
+import { registerGateway } from "./middlewares/utils/gatewayRegister";
 
 const app = express();
 
@@ -33,7 +34,10 @@ app.listen(PORT, async () => {
     try {
         await sequelize.sync({ force: true, benchmark: true }); // Change to false when in production
         console.log("Database synced");
+
     } catch (error) {
         console.error("Unable to connect to the database:", error);
     }
+
+    registerGateway("anime", `http://localhost:3000`);
 });
