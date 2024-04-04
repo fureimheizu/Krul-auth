@@ -1,30 +1,28 @@
 import { Model, DataTypes, Sequelize } from "sequelize";
 
 export default (sequelize: Sequelize) => {
-    class Genre extends Model {
+    class TokensBlacklist extends Model {
         public id!: number;
-        public name!: string;
+        public token!: string;
         public readonly createdAt!: Date;
         public readonly updatedAt!: Date;
     }
 
-    Genre.init(
+    TokensBlacklist.init(
         {
             id: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
                 primaryKey: true,
             },
-            name: {
+            token: {
                 type: DataTypes.STRING,
-                allowNull: false,
-                unique: true,
-            },
+            }
         },
         {
             sequelize,
-            tableName: "genres",
+            tableName: "tokens_blacklist",
         }
     );
-    return Genre;
+    return TokensBlacklist;
 };

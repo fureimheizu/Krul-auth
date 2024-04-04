@@ -1,9 +1,6 @@
 import { Sequelize } from "sequelize";
 import setupUserModel from "./user";
-import setupAnimeModel from "./anime";
-import setupGenresModel from "./genres";
-import setupUserAnimesModel from "./userAnime";
-import setupAnimeGenresModel from "./animeGenres";
+import setupTokensBlacklistModel from "./tokens";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -18,14 +15,7 @@ const sequelize = new Sequelize({
 });
 
 const User = setupUserModel(sequelize);
-const Anime = setupAnimeModel(sequelize);
-const Genres = setupGenresModel(sequelize);
-const UserAnimes = setupUserAnimesModel(sequelize);
-const AnimeGenres = setupAnimeGenresModel(sequelize);
+const TokensBlacklist = setupTokensBlacklistModel(sequelize);
 
-User.belongsToMany(Anime, { through: UserAnimes, foreignKey: "userId" });
-Anime.belongsToMany(User, { through: UserAnimes, foreignKey: "animeId" });
-Anime.belongsToMany(Genres, { through: AnimeGenres, foreignKey: "animeId" });
-Genres.belongsToMany(Anime, { through: AnimeGenres, foreignKey: "genreId" });
 
-export { sequelize, User, Anime, Genres, UserAnimes, AnimeGenres };
+export { sequelize, User, TokensBlacklist };

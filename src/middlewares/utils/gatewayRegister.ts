@@ -9,7 +9,7 @@ export const registerGateway = async (name: string, url: string) => {
         console.log(`[Gateway-Register]: Registering gateway ${name}...`);
         const response = await axios({
             method: "post",
-            url: `${gatewayUrl}/register`,
+            url: `${gatewayUrl}/gateway-register-service`,
             data: {
                 name,
                 url

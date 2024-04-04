@@ -3,10 +3,6 @@ import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
 import { sequelize } from "./models";
-import RegisterRoute from "./routes/user/register";
-import LoginRoute from "./routes/user/login";
-import GetAnimeRoute from "./routes/anime/getAnimes";
-import InsertAnimeRoute from "./routes/anime/insertAnime";
 import 'dotenv/config';
 import Routes from './routes'
 import { registerGateway } from "./middlewares/utils/gatewayRegister";
@@ -24,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 Routes.forEach((route) => {
-    app.use('/', route);
+    app.use('/auth', route);
 });
 
 const PORT = process.env.PORT || 3000;
@@ -39,5 +35,5 @@ app.listen(PORT, async () => {
         console.error("Unable to connect to the database:", error);
     }
 
-    registerGateway("anime", `http://localhost:3000`);
+    registerGateway("auth", `http://localhost:3000`);
 });
