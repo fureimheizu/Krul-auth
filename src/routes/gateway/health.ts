@@ -1,5 +1,4 @@
 import express, { Request, Response } from 'express';
-import { logoutController } from '../../controllers/logout';
 
 const router = express.Router();
 

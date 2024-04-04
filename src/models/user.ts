@@ -30,7 +30,7 @@ export default (sequelize: Sequelize) => {
                         msg: "The name length should be between 4 and 30 characters",
                     },
                 },
-                unique: true,
+                unique: false,
             },
             email: {
                 type: DataTypes.STRING,
